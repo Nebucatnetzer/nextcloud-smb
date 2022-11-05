@@ -30,7 +30,8 @@ jobs:
     
     - name: Log into registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-
+      
+    - uses: actions/checkout@v3
     - name: Build image $IMAGE_NAME
       run:  ls -al && docker buildx build --file Dockerfile --tag $IMAGE_NAME --platform linux/arm64 .
       env:
