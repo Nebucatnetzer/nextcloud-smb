@@ -33,7 +33,6 @@ jobs:
 
     - name: Build image $IMAGE_NAME
       run:  ls -al && docker buildx build --file Dockerfile --tag $IMAGE_NAME --platform linux/arm64 .
-      working-directory: src/
       env:
         IMAGE_NAME: nextcloud-smb
         
