@@ -29,7 +29,7 @@ jobs:
       
     - uses: actions/checkout@v3
     - name: Build image $IMAGE_NAME
-      run:  ls -al && docker buildx build --file Dockerfile --tag $IMAGE_NAME:$(date +%Y-%m-%d+%H%M) --platform linux/arm64 .
+      run:  ls -al && docker buildx build --file Dockerfile --tag $IMAGE_NAME:$(date +%Y%m%d%H%M) --platform linux/arm64 .
       env:
         IMAGE_NAME: nextcloud-smb
         
@@ -45,7 +45,7 @@ jobs:
         # Use Docker `latest` tag convention
         [ "$VERSION" == "main" ] && VERSION=latest
         echo IMAGE_ID=$IMAGE_ID
-        echo VERSION=$(date +%Y-%m-%d+%H%M)
+        echo VERSION=$(date +%Y%m%d%H%M)
         docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
         docker push $IMAGE_ID:$VERSION
       env:
