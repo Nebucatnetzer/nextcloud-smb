@@ -23,9 +23,6 @@ jobs:
       
     - name: Enable multiarch in Docker
       run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
-    
-    - name: Clone ttrss-docker-compose repository
-      run: git clone -b static-dockerhub https://git.tt-rss.org/fox/ttrss-docker-compose.git
 
     - name: Log into registry
       run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
