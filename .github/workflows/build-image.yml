@@ -41,7 +41,7 @@ jobs:
         IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
         echo IMAGE_ID=$IMAGE_ID
         echo VERSION=$(date +%Y%m%d)
-        docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
-        docker push $IMAGE_ID:$VERSION
+        docker tag $IMAGE_NAME $IMAGE_ID:$(date +%Y%m%d)
+        docker push $IMAGE_ID:$(date +%Y%m%d)
       env:
         IMAGE_NAME: nextcloud-smb
