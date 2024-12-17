@@ -21,7 +21,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt update
-        sudo apt-get install -y qemu binfmt-support qemu-user-static
+        sudo apt-get install -y qemu-system binfmt-support qemu-user-static
       
     - name: Enable multiarch in Docker
       run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
