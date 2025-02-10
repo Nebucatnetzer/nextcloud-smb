@@ -5,7 +5,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the "main" branch
   push:
     tags: [ 'v*.*.*' ]
-    
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -22,7 +22,7 @@ jobs:
       run: |
         sudo apt update
         sudo apt-get install -y qemu-system binfmt-support qemu-user-static
-      
+
     - name: Enable multiarch in Docker
       run: docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
@@ -34,7 +34,7 @@ jobs:
       run:  docker buildx build --tag $IMAGE_NAME --platform linux/arm64 .
       env:
         IMAGE_NAME: nextcloud-smb
-        
+
     - name: Push image $IMAGE_NAME
       run: |
         IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
@@ -50,5 +50,7 @@ jobs:
         echo VERSION=$VERSION
         docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
         docker push $IMAGE_ID:$VERSION
+        docker tag $IMAGE_NAME $IMAGE_ID:latest
+        docker push $IMAGE_ID:latest
       env:
         IMAGE_NAME: nextcloud-smb
