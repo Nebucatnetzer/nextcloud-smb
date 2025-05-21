@@ -22,6 +22,7 @@ RUN set -ex; \
         libc-client-dev \
         libkrb5-dev \
         libsmbclient-dev \
+        build-essential gcc libtool make \
     ; \
     \
     docker-php-ext-configure imap --with-kerberos --with-imap-ssl; \
