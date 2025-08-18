@@ -18,7 +18,6 @@ RUN set -ex; \
     apt-get update; \
     apt-get install -y --no-install-recommends \
         libbz2-dev \
-        libc-client-dev \
         libkrb5-dev \
         libsmbclient-dev \
     ; \
